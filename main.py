@@ -1,13 +1,10 @@
 from utils_images_description import iterate_pdfs
+from utils_config import BUCKET_NAME, PROMPT_TEXT
 import time
 
 
-bucket_name_test = "brtecppar-search-dataset"
-prompt_text = "Descreva a imagem de forma resumida sem perder o que há de relevante"
-
-
 start_time = time.time()
-iterate_pdfs(bucket_name_test, prompt_text)
+iterate_pdfs(BUCKET_NAME, PROMPT_TEXT)
 end_time = time.time()
 
 elapsed_time_seconds = end_time - start_time

@@ -36,7 +36,7 @@ def parse_each_image(dir_path, prompt_text) -> dict:
     dir_png_files = [file for file in list_dir if file.endswith(".png")]
     total_files = len(dir_png_files)
     metadata_dict = {"total_images": total_files}
-    max_attempts = 3
+    max_attempts = 5
 
     for count, file in enumerate(dir_png_files):
         filename = os.fsdecode(file)
