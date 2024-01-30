@@ -8,6 +8,10 @@ This code parse every embedded image in each PDF file in a Cloud Storage Bucket 
 
 ## Getting Started
 
+### Local Authentication
+* gcloud auth login
+* gcloud config set project {project_id}
+
 ### Installing
 
 * python -m venv venv
