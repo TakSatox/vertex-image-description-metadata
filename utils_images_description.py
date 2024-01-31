@@ -26,7 +26,6 @@ def extract_pdf_images(blob_name, bucket_name):
                 with open(path, "wb") as fp:
                     fp.write(image.data)
                     page_count += 1
-    
     return temp_dir
 
 
@@ -58,10 +57,9 @@ def parse_each_image(dir_path, prompt_text) -> dict:
 
 def iterate_pdfs(bucket_name, prompt_text):
     blobs = storage_client.list_blobs(bucket_name)
-    blobs_name = [blob.name for blob in blobs if blob.name.endswith(".pdf")]
+    blobs_name = [blob.name for blob in blobs if blob.name.endswith(".pdf") and not blob.metadata.get("total_images", "")]
     total_files = len(blobs_name)
 
-    print(f"Parsing and saving metadata in {total_files} pdf files")
     for count, blob_name in enumerate(blobs_name):
         print(f"Saving metadata in blob: '{blob_name}' ({count+1}/{total_files})")
         dir = extract_pdf_images(blob_name, bucket_name)
